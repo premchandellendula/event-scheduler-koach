@@ -1,0 +1,38 @@
+<main>
+  <div class="text-center p-4 border-b text-2xl font-semibold">
+    Event Scheduler
+  </div>
+
+  <div class="flex w-[90%] m-auto mt-10">
+    <div class="w-[30%] mr-10 ml-5">
+      <div class="bg-slate-100 border border-black m-auto rounded-md">
+        <div class="flex flex-col">
+          <div class="flex flex-col p-4">
+            <label class="text-xl my-2">Start Time</label>
+            <input type="text" placeholder="2" [(ngModel)]="start_time" class="border border-violet-400" >
+          </div>
+          
+          <div class="flex flex-col p-4">
+            <label class="text-xl my-2">End Time</label>
+            <input type="text" placeholder="5" [(ngModel)]="end_time" class="border border-violet-400" >
+          </div>
+        </div>
+        
+        <div class="flex justify-center">
+          <button (click)="addEvent()" class="bg-violet-600 text-white px-4 py-2 rounded-md my-2">Add Event</button>
+        </div>
+      </div>
+      <p [ngClass]="{'text-green-500': messageType === 'success', 'text-red-500': messageType === 'error'}" class="text-xl font-semibold mt-4">{{message}}</p>
+    </div>
+
+
+    <div class="w-[50%] ml-20">
+      <h3 class="text-2xl mb-2">Scheduled Events:</h3>
+      <ul class="mt-4">
+        <li *ngFor="let event of events" class="text-lg bg-gray-100 my-4 p-3 rounded-md">
+            Event from <span class="text-violet-600 text-xl font-semibold">{{ event.start_time }}:00</span> to <span class="text-violet-600 text-xl font-semibold">{{ event.end_time }}:00</span>
+        </li>
+    </ul>
+    </div>
+  </div>
+</main>
